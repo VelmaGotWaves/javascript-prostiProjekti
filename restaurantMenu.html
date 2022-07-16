@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        body{
+            background-color: whitesmoke;
+            font-family: Helvetica;
+        }
+        .naslov{
+            font-size: 30px;
+        }
+        .linija{
+            background-color:rgb(255, 153, 0);
+            height: 6px;
+            width:100px;
+            margin-bottom: 40px;
+            border-radius: 20px;
+        }
+        .content{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction:column;
+        }
+        .dgm{
+            margin:0px 10px;
+            font-size: large;
+            border-color:orange;
+            border-radius: 5px;
+            color:orange;
+            
+        }
+        .hrana{
+            display:flex;
+            justify-content: space-around;
+            align-items: center; 
+            flex-wrap:wrap;
+
+            
+        }
+        .obrok{
+            
+            width:40%;
+            padding:10px;
+            margin-bottom:30px;
+        }
+        .ikona{
+            width:30%;
+            height:100%;
+        }
+        .tekstualni{
+            width:65%;
+            float:right;
+            font-size:110%;
+            
+        }
+        .dugmici{
+            margin-bottom: 30px;
+        }
+        .ime{
+            float:left;
+            display:block;
+        } 
+        .cena{
+            float:right;
+            display:block;
+            color:orange;
+        } 
+        .ikona{
+            
+            border:2px solid rgb(255, 153, 0) ;
+        }
+        .opis{
+            font-size:120%;
+        }
+    </style>
+    <script>let uslov="true";</script>
+</head>
+<body onload="prikaziMeni()">
+    <div class="content">
+        <div class="naslov">
+            <h1>Our Menu</h1>
+        </div>
+        <hr class="linija">
+        <div class="dugmici">
+            <button class="dgm" value="true">All</button>
+            <button class="dgm" value="Breakfast">Breakfast</button>
+            <button class="dgm" value="Lunch">Lunch</button>
+            <button class="dgm" value="Shakes">Shakes</button>
+            <button class="dgm" value="Dinner">Dinner</button>
+        </div>
+
+        
+
+            <div class="hrana" id="hrana">
+                <div class="obrok">
+                    <img class="ikona" src="https://www.veletrznica.co.rs/media/djcatalog2/images/item/0/banana.jpg" alt="">
+                    <div class="tekstualni">
+                        <div class="naslovi">
+                            <h3 class="ime">Susan Smith</h3>
+                            <h3 class="cena">$10.99</h3>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <hr>
+                        <p class="opis">Nam feugiat nulla a ante dignissim, ac volutpat dui tempor. Nullam sollicitudin sem sit amet.</p>
+                    </div>
+                    
+                </div>
+
+            
+
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        let dugmad = document.querySelectorAll(".dgm");
+        dugmad.forEach(element => {
+            
+            element.addEventListener("click", function(e){
+                dugmad.forEach(element => {
+                    element.style.color="orange";
+                    element.style.backgroundColor="whitesmoke";
+                    
+                });
+                e.currentTarget.style.backgroundColor="#ffeecd";
+                uslov=e.currentTarget.value;
+                prikaziMeni();
+            });
+        });
+
+
+        function hrana(slika, ime, cena, opis, tip)
+        {
+            this.slika = slika;
+            this.ime = ime;
+            this.cena = cena;
+            this.opis = opis;
+            this.tip = tip;
+            
+        }
+        
+        let meni = [];
+        
+        meni.push(new hrana("https://static.onecms.io/wp-content/uploads/sites/43/2022/02/16/21014-Good-old-Fashioned-Pancakes-mfs_001.jpg","Palacinke","$10.99",
+        "Maecenas pellentesque dui eu nibh dictum euismod. Ut fringilla vulputate orci, a dignissim lacus auctor.", "Breakfast"));
+        meni.push(new hrana("https://hips.hearstapps.com/hmg-prod/images/delish-190808-baked-drumsticks-0217-landscape-pf-1567089281.jpg","Peceno Pile","$11.99",
+        "Nam feugiat nulla a ante dignissim, ac volutpat dui tempor. Nullam sollicitudin sem sit amet.", "Lunch"));
+        meni.push(new hrana("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-755-1-1024x683.jpg","Fred Lincon","$12.99",
+        "Praesent dignissim tincidunt iaculis. In vitae nunc turpis. Integer vulputate vel magna eu placerat. Morbi.", "Shakes"));
+        meni.push(new hrana("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-1663-1-1024x683.jpg","Miles Morales","$13.99",
+        "Nullam auctor iaculis egestas. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per.", "Dinner"));
+        meni.push(new hrana("https://www.cspinet.org/sites/default/files/styles/700x530/public/2021-11/december21_bn_hero_700x530.jpg?h=beb81a91&itok=oawlUAq9","Musli Pahuljice","$10.99",
+        "Maecenas pellentesque dui eu nibh dictum euismod. Ut fringilla vulputate orci, a dignissim lacus auctor.", "Breakfast"));
+        meni.push(new hrana("https://hips.hearstapps.com/hmg-prod/images/delish-190808-baked-drumsticks-0217-landscape-pf-1567089281.jpg","Peceno Pile","$11.99",
+        "Nam feugiat nulla a ante dignissim, ac volutpat dui tempor. Nullam sollicitudin sem sit amet.", "Lunch"));
+        meni.push(new hrana("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-755-1-1024x683.jpg","Fred Lincon","$12.99",
+        "Praesent dignissim tincidunt iaculis. In vitae nunc turpis. Integer vulputate vel magna eu placerat. Morbi.", "Shakes"));
+        meni.push(new hrana("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-1663-1-1024x683.jpg","Miles Morales","$13.99",
+        "Nullam auctor iaculis egestas. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per.", "Dinner"));
+        meni.push(new hrana("https://food.fnr.sndimg.com/content/dam/images/food/fullset/2008/3/26/0/IE0309_French-Toast.jpg.rend.hgtvcom.616.462.suffix/1431730431340.jpeg","Przenice","$10.99",
+        "Maecenas pellentesque dui eu nibh dictum euismod. Ut fringilla vulputate orci, a dignissim lacus auctor.", "Breakfast"));
+        meni.push(new hrana("https://hips.hearstapps.com/hmg-prod/images/delish-190808-baked-drumsticks-0217-landscape-pf-1567089281.jpg","Peceno Pile","$11.99",
+        "Nam feugiat nulla a ante dignissim, ac volutpat dui tempor. Nullam sollicitudin sem sit amet.", "Lunch"));
+        meni.push(new hrana("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-755-1-1024x683.jpg","Fred Lincon","$12.99",
+        "Praesent dignissim tincidunt iaculis. In vitae nunc turpis. Integer vulputate vel magna eu placerat. Morbi.", "Shakes"));
+        meni.push(new hrana("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-1663-1-1024x683.jpg","Miles Morales","$13.99",
+        "Nullam auctor iaculis egestas. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per.", "Dinner"));
+
+        // meni.push(new radnik("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/Option-3-1024x683.jpg","Jhon Cena","$14.99",
+        // "Nunc laoreet vel tortor vel eleifend. Donec convallis velit vitae justo dapibus hendrerit. Lorem ipsum."));
+        function prikaziMeni(){
+            document.getElementById("hrana").innerHTML="";
+            meni.forEach(element => {
+                
+                if (element.tip==uslov) {
+                    
+                    document.getElementById("hrana").innerHTML+='<div class="obrok"><img class="ikona" src="'+ element.slika+'" alt=""><div class="tekstualni"><div class="naslovi"><h3 class="ime">'+element.ime+'</h3><h3 class="cena">'+element.cena+'</h3></div><br><br><br><hr><p class="opis">'+element.opis+'</p></div></div>';
+                }
+                else if(uslov=="true"){
+                    
+                    document.getElementById("hrana").innerHTML+='<div class="obrok"><img class="ikona" src="'+ element.slika+'" alt=""><div class="tekstualni"><div class="naslovi"><h3 class="ime">'+element.ime+'</h3><h3 class="cena">'+element.cena+'</h3></div><br><br><br><hr><p class="opis">'+element.opis+'</p></div></div>';
+                }
+            });
+        }
+        
+        
+    </script>
+</body>
+</html>

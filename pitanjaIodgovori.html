@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .paragrafi{display:inline-block}
+        .sadrzaj2{margin-top:10% ; margin-left:44%; }
+    </style>
+</head>
+<body onload="Load()">
+    <div class="sadrzaj">
+        <h1 align="center">Web Programiranje</h1>
+        <div class="sadrzaj2" align="justify">
+            <h2 id="pitanjeHeader">"Pitanje"</h2>
+            <input id="1i"type="radio" name="opcije"><p class="paragrafi" id="1p">sdf</p>
+            <br>
+            <input id="2i"type="radio" name="opcije"><p class="paragrafi" id="2p">fff</p>
+            <br>
+            <input id="3i"type="radio" name="opcije"><p class="paragrafi" id="3p">sdf</p>
+            <br>
+            <input id="4i"type="radio" name="opcije"><p class="paragrafi" id="4p">sdf</p>
+            <br>
+            <button id="submit" onclick="Sledece()">Submit</button>
+
+        </div>
+    </div>
+    <script>
+        let i;
+        function pitanja(pitanje, odgovor1, odgovor2, odgovor3, odgovor4, resenje)
+        {
+            this.pitanje = pitanje;
+            this.odgovor1 = odgovor1;
+            this.odgovor2 = odgovor2;
+            this.odgovor3 = odgovor3;
+            this.odgovor4 = odgovor4;
+            this.resenje = resenje;
+        }
+
+        let zbirka = [];
+
+        zbirka.push(new pitanja("0gettype je funkcija :","0koja vraca tip varijable","0jabuka","0banana","0mandarina","0koja vraca tip varijable" ));
+        zbirka.push(new pitanja("1gettype je funkcija :","koja vraca tip varijable","jabuka","banana","mandarina","koja vraca tip varijable" ));
+        zbirka.push(new pitanja("2gettype je funkcija :","koja vraca tip varijable","jabuka","banana","mandarina","koja vraca tip varijable" ));
+        zbirka.push(new pitanja("3gettype je funkcija :","koja vraca tip varijable","jabuka","banana","mandarina","koja vraca tip varijable" ));
+        zbirka.push(new pitanja("4gettype je funkcija :","koja vraca tip varijable","jabuka","banana","mandarina","koja vraca tip varijable" ));
+
+        function Load(){
+            let n=Math.floor(Math.random() * zbirka.length);
+            while(n==i){
+                n=Math.floor(Math.random() * zbirka.length);
+            }
+            i=n;
+            document.getElementById("pitanjeHeader").innerHTML=zbirka[i].pitanje;
+            document.getElementById("1p").innerHTML=zbirka[i].odgovor1;
+            document.getElementById("2p").innerHTML=zbirka[i].odgovor2;
+            document.getElementById("3p").innerHTML=zbirka[i].odgovor3;
+            document.getElementById("4p").innerHTML=zbirka[i].odgovor4;
+            document.getElementById("1i").value=zbirka[i].odgovor1;
+            document.getElementById("2i").value=zbirka[i].odgovor2;
+            document.getElementById("3i").value=zbirka[i].odgovor3;
+            document.getElementById("4i").value=zbirka[i].odgovor4;
+            /*for (let index = 0; index < 4; index++) {
+               if(document.getElementById(index+"i").value==""){
+                   document.getElementById(index+"p").Hide();
+                  document.getElementById(index+"i").Hide();
+                } 
+                else if(document.getElementById(index+"i").value==""){
+                   document.getElementById(index+"p").Hide();
+                  document.getElementById(index+"i").Hide();
+                } 
+            }*/
+            
+            
+        }
+
+        function Sledece(){
+            let brojac=0;
+            let trigger=0;
+            for (let index = 1; index < 5; index++) {
+                if(document.getElementById(index+"i").checked == true && document.getElementById(index+"i").value== zbirka[i].resenje)
+                { 
+                    trigger=0;
+                    break;
+                }
+                else if(document.getElementById(index+"i").checked == true && document.getElementById(index+"i").value!= zbirka[i].resenje)
+                {
+                    document.getElementById(index+"p").style="background-color:red";
+                    trigger=1;
+                    
+                }
+                else if(document.getElementById(index+"i").checked == false)
+                {
+                    brojac++;
+                    if(brojac==4){
+                        trigger=1;
+                        for (let index = 1; index < 5; index++) {
+                            document.getElementById(index+"p").style="background-color:red";
+                            document.getElementById(index+"i").style="background-color:red";
+                            
+                        }
+                        
+                    }
+                    
+                }
+            }
+            if(trigger==1) return;
+            for (let index = 1; index < 5; index++) {
+                document.getElementById(index+"p").style="background-color:white";
+                document.getElementById(index+"i").style="background-color:white";
+                            
+            }
+            /////////////////////////////////////////
+            for (let index = 1; index < 5; index++) {
+                document.getElementById(index+"i").checked =false;
+            }
+            let n=Math.floor(Math.random() * zbirka.length);
+            while(n==i){
+                n=Math.floor(Math.random() * zbirka.length);
+            }
+            i=n;
+            document.getElementById("pitanjeHeader").innerHTML=zbirka[i].pitanje;
+            document.getElementById("1p").innerHTML=zbirka[i].odgovor1;
+            document.getElementById("2p").innerHTML=zbirka[i].odgovor2;
+            document.getElementById("3p").innerHTML=zbirka[i].odgovor3;
+            document.getElementById("4p").innerHTML=zbirka[i].odgovor4;
+            document.getElementById("1i").value=zbirka[i].odgovor1;
+            document.getElementById("2i").value=zbirka[i].odgovor2;
+            document.getElementById("3i").value=zbirka[i].odgovor3;
+            document.getElementById("4i").value=zbirka[i].odgovor4;
+            //for (let index = 0; index < 4; index++) {
+            //    if(document.getElementById(index+"p").innerHTML==""){
+            //        document.getElementById(index+"p").Hide();
+            //       document.getElementById(index+"i").Hide();
+            //    } 
+            //}
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        
+        .container{
+            padding-top: 30%;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction:column;
+        }
+        .counter{
+            font-size:50px;
+        }
+        .number{
+            font-size:50px;
+            padding:20px;
+        }
+        
+    </style>
+    <script>
+        let brojac=0;
+        function reset(){
+            brojac=0;
+            document.getElementById("number").innerHTML=brojac;
+            document.getElementById("number").style.color="black";
+        }
+    </script>
+</head >
+<body onload="reset()">
+    <div class="container">
+        <div class="counter">
+            Counter
+        </div>
+        <div class="number" id="number"></div>
+        <div class="buttons">
+            <button id="decrease" onclick="decrease()">DECREASE</button>
+            <button id="reset" onclick="reset()">RESET</button>
+            <button id="increase" onclick="increase()">INCREASE</button>
+        </div>
+    </div>
+    <script>
+        function increase(){
+            brojac++;
+            document.getElementById("number").innerHTML=brojac;
+            if(brojac>0)
+            document.getElementById("number").style.color="green";
+            else if(brojac==0)
+            document.getElementById("number").style.color="black";
+            else if(brojac<0)
+            document.getElementById("number").style.color="red";
+        }
+        function decrease(){
+            brojac--;
+            document.getElementById("number").innerHTML=brojac;
+            if(brojac>0)
+            document.getElementById("number").style.color="green";
+            else if(brojac==0)
+            document.getElementById("number").style.color="black";
+            else if(brojac<0)
+            document.getElementById("number").style.color="red";
+        }
+    </script>
+</body>
+</html>

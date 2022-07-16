@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: whitesmoke;
+
+        }
+        .naslov{
+            font-size: 30px;
+        }
+        hr{
+            background-color:rgb(59, 216, 255);
+            height: 6px;
+            width:60px;
+            margin-bottom: 40px;
+            border-radius: 20px;
+        }
+        .content{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction:column;
+        }
+        .slika{
+            width:200px;
+            height: 200px;
+            border-radius: 100%;
+        }
+        #slika{
+            
+            width:200px;
+            height: 200px;
+            border-radius: 100%;
+        }
+        .kutija{
+            -moz-box-shadow: 0 0 9px #ccc;
+            -webkit-box-shadow: 0 0 9px #ccc;
+            box-shadow: 0 0 9px #ccc;
+            background-color: white;
+            max-width:600px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction:column;
+            border-radius: 20px;
+            padding:20px;
+        }
+        .tekst{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction:column;
+            align-items: center;
+        }
+        #opis{
+            color:black;
+        }
+    </style>
+</head>
+<body onload="supriseMe()">
+    <div class="content">
+        <div class="naslov">
+            <h1>Our Reviews</h1>
+        </div>
+        <hr class="linija">
+        <div class="kutija">
+            <div class="slika"><img id="slika"src="" alt="Failed to load"></div>
+            <div class="tekst">
+                <p id="ime"></p>
+                <p id="pozicija"></p>
+                <p id="opis" align="center";></p>
+            </div>
+            
+            <div class="strelice">
+                <button class="str" value="1"><</button>
+                
+                <button class="str" value="2">></button>
+
+            </div>
+            <div class="surprise">
+                <button class="surp" onclick="supriseMe()">Surprise Me</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        let i;
+        let n;
+        function radnik(slika, ime, pozicija, opis)
+        {
+            this.slika = slika;
+            this.ime = ime;
+            this.pozicija = pozicija;
+            this.opis = opis;
+            
+        }
+
+        let zbirka = [];
+
+        zbirka.push(new radnik("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-177-1024x683.jpg","Susan Smith","Programmer",
+        "Im baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry"));
+        zbirka.push(new radnik("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-1210-1024x683.jpg","Jhonny Test","Cistac",
+        "Im baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry"));
+        zbirka.push(new radnik("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-755-1-1024x683.jpg","Fred Lincon","Web Programmer",
+        "Im baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry"));
+        zbirka.push(new radnik("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/HKstrategies-1663-1-1024x683.jpg","Miles Morales","Orange",
+        "Im baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry"));
+        zbirka.push(new radnik("https://www.corporatephotographylondon.com/wp-content/uploads/2019/11/Option-3-1024x683.jpg","Jhon Cena","Jabuka",
+        "Im baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry"));
+
+        function supriseMe(){
+            let n=Math.floor(Math.random() * zbirka.length);
+            while(n==i){
+                n=Math.floor(Math.random() * zbirka.length);
+            }
+            i=n;
+            console.log(i);
+            ucitavanje();
+        }
+        function strelica(){
+            //ovde onaj kod iz proslog njegovog koda, ako je strelica ka levo, posalji i --(proveri da li je i=0), ako je strelica ka desno, posalji i++(proveri da li je i==zbirka.length--1)
+            ucitavanje();
+        }
+        function ucitavanje(){
+            document.getElementById("slika").src=zbirka[i].slika;
+            document.getElementById("ime").innerHTML=zbirka[i].ime;
+            document.getElementById("pozicija").innerHTML=zbirka[i].pozicija;
+            document.getElementById("opis").innerHTML=zbirka[i].opis;
+        }
+        let strele = document.querySelectorAll(".str");
+        strele.forEach(element => {
+            element.addEventListener("click",function(e){
+                if(e.currentTarget.value==1){
+                    if(i==0) i=zbirka.length-1;
+                    else i--;
+                    console.log(i);
+                    ucitavanje();
+                }
+                else if(e.currentTarget.value==2){
+                    if(i==zbirka.length-1) i=0;
+                    else i++;
+                    console.log(i);
+                    ucitavanje();
+                }
+            });
+            
+        });
+        
+    </script>
+</body>
+</html>

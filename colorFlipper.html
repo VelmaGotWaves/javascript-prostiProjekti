@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color flipper</title>
+    <style>
+        body{
+            height:100%;
+            margin:0;
+            
+        }
+        .josjedandiv{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .text{
+            
+            padding:20px;
+            background-color: rgb(25, 22, 31);
+            color:white;
+            font-size:50px;
+            border-radius:10px;
+            display: flex;
+            
+        }
+        .imeboje{
+            color:rgb(0, 191, 255);
+            display: flex;
+        }
+        .buttonDiv{
+            padding-top: 50px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button1{
+            background-color: whitesmoke;
+            font-size:20px;
+            padding:10px;
+        }
+        .navigation{
+            display: flex;
+            justify-content: space-around;
+            background-color:Whitesmoke;
+            padding:20px;
+            margin-bottom:200px;
+            font-size:20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .mystyle{
+            color:rgb(0, 191, 255);
+        }
+    </style>
+    <script>
+        function dobiboju(){
+            var levi = document.getElementById("colorFlipper");
+            levi.classList.toggle("mystyle");
+            kliknuoSi();
+        }
+    </script>
+</head>
+<body onload="dobiboju()">
+    <div class="navigation">
+        <div  id="colorFlipper" onclick="colorToggle1()" >Color Flipper</div>
+        <div  id="simpleHex" onclick="colorToggle2()" >Simple Hex</div>
+
+    </div>
+    <div class="josjedandiv">
+        <div class="text"> Background Color : 
+            <div class="imeboje" id="imeboje"></div>
+        </div>
+    </div>
+    
+    <div class="buttonDiv">
+        <button id="button1"class="button1" onclick="kliknuoSi()">CLICK ME</button>
+    </div>
+    <script>
+        hexBoje = new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F");
+        obicneBoje= new Array("Red","Green", "Blue","Yellow","Cyan","White","Orange","Purple","Pink" );
+
+        var levi = document.getElementById("colorFlipper");
+        var desni = document.getElementById("simpleHex");
+
+        function kliknuoSi(){
+            
+            if(levi.className=="mystyle"){
+                pozoviObicnuBoju();
+            }
+            if(desni.className=="mystyle"){
+                pozoviHexBoju();
+            }
+        }
+
+        function pozoviObicnuBoju()
+        {
+            let boja =obicneBoje[Math.floor(Math.random()*obicneBoje.length)];
+            document.body.style.backgroundColor=boja;
+            document.getElementById("imeboje").innerHTML=boja;
+            
+        }
+        
+        function pozoviHexBoju()
+        {
+            let boja="";
+            for (let i = 0; i < 6; i++) {
+                boja +=hexBoje[Math.floor(Math.random()*hexBoje.length)];
+            }
+            console.log(boja);
+            document.body.style.backgroundColor="#"+boja;
+            document.getElementById("imeboje").innerHTML="#"+boja;
+        }
+
+        function colorToggle1(){
+            if(desni.className=="mystyle"){
+            levi.classList.toggle("mystyle");
+            desni.classList.toggle("mystyle");
+            }
+        }
+        function colorToggle2(){
+            if(levi.className=="mystyle"){
+            levi.classList.toggle("mystyle");
+            desni.classList.toggle("mystyle");
+            }
+        }
+
+        
+        
+    </script>
+</body>
+</html>
